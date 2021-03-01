@@ -2,6 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import ExcelTool from '../views/ExcelTool.vue';
+import Todo from '../views/Todo.vue';
+import ColorExchange from '../views/ColorExchange.vue';
 
 Vue.use(VueRouter);
 
@@ -20,6 +22,16 @@ const routes = [
     path: '/exceltool',
     name: 'ExcelTool',
     component: ExcelTool,
+  },
+  {
+    path: '/colorExchange',
+    name: 'ColorExchange',
+    component: ColorExchange,
+  },
+  {
+    path: '/todo',
+    name: 'Todo',
+    component: Todo,
   },
   {
     path: '/about',

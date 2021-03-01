@@ -61,7 +61,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <contact-card />
+    <!-- <contact-card /> -->
     <hover-button />
   </nav>
 </template>
@@ -78,6 +78,7 @@ export default {
       links: [
         { icon: "mdi-home", text: "主页", route: "/home" ,isSelect:true},
         { icon: "mdi-home", text: "设置", route: "/exceltool" ,isSelect:false},
+        { icon: "mdi-home", text: "介绍", route: "/about" ,isSelect:false},
       ],
       myMedias: [
         {

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <v-container id="goals" class="py-2" tag="section">
-      <heading>工具列表</heading>
+       <h2>工具列表</h2>
       <v-row>
         <v-col
           v-for="(item, i) in cards"
@@ -11,7 +11,7 @@
           sm="6"
           md="4"
         >
-          <v-card width="280" height="178">
+          <v-card width="280" height="178" @click="onClickCard(item.pageUrl)">
             <v-card-title class="py-2">
               <v-img
                 width="53"
@@ -27,12 +27,23 @@
             </v-list>
             <v-card-actions class="py-0">
               <v-spacer></v-spacer>
-              <v-btn text> 使用 </v-btn>
-              <v-btn text> 帮助 </v-btn>
+              <v-btn text @click.stop="onClickCardUseBtn(item.pageUrl)">
+                使用
+              </v-btn>
+              <v-btn text @click.stop="onClickCardHelpBtn(item.help)"> 帮助 </v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
       </v-row>
+      <v-snackbar v-model="isTipOpen">
+        {{ tipStr }}
+
+        <template v-slot:action="{ attrs }">
+          <v-btn color="pink" text v-bind="attrs" @click="isTipOpen = false">
+            关闭
+          </v-btn>
+        </template>
+      </v-snackbar>
     </v-container>
   </div>
 </template>
@@ -47,9 +58,19 @@ export default {
     HelloWorld,
   },
   data: () => ({
+    isTipOpen: false,
+    tipStr: "",
     cards: [
       {
         cardId: 1,
+        iconSrc: require("../assets/ins.png"),
+        name: "任务清单",
+        des: "简洁好用的任务清单",
+        pageUrl: "todo",
+        help: "工具信息：帮助整理当日工作，聚焦最重要的工作",
+      },
+      {
+        cardId: 2,
         iconSrc: require("../assets/ins.png"),
         name: "Excel转Json工具",
         des: "聚合Excel导出JSON功能聚合Excel导出JSON功能",
@@ -57,15 +78,15 @@ export default {
         help: "工具信息：聚合Excel导出JSON功能",
       },
       {
-        cardId: 2,
+        cardId: 3,
         iconSrc: require("../assets/ins.png"),
         name: "颜色参考工具",
-        des:"获得好看的配色方案",
+        des: "获得好看的配色方案",
         pageUrl: "",
         help: "工具信息：获得好看的配色方案",
       },
       {
-        cardId: 3,
+        cardId: 4,
         iconSrc: require("../assets/ins.png"),
         name: "字体推荐",
         des: "聚合Excel导出JSON功能",
@@ -73,7 +94,7 @@ export default {
         help: "工具信息：聚合Excel导出JSON功能",
       },
       {
-        cardId: 4,
+        cardId: 5,
         iconSrc: require("../assets/ins.png"),
         name: "Json语法检查",
         des: "聚合Excel导出JSON功能",
@@ -81,14 +102,28 @@ export default {
         help: "工具信息：聚合Excel导出JSON功能",
       },
       {
-        cardId: 5,
+        cardId: 6,
         iconSrc: require("../assets/ins.png"),
-        name: "RGB与Hex颜色互转",
-        des: "聚合Excel导出JSON功能",
-        pageUrl: "",
-        help: "工具信息：聚合Excel导出JSON功能",
-      }
+        name: "颜色格式转换",
+        des: "RGB，Hex，HSL颜色互转",
+        pageUrl: "colorExchange",
+        help: "工具信息：RGB与Hex颜色互转",
+      },
     ],
   }),
+  methods: {
+    onClickCard(url) {
+      if(url=="")return;
+      this.$router.push({ path: "/" + url });
+    },
+    onClickCardUseBtn(url) {
+      if(url=="")return;
+      this.$router.push({ path: "/" + url });
+    },
+    onClickCardHelpBtn(helpstr) {
+      this.tipStr = helpstr;
+      this.isTipOpen = true;
+    },
+  },
 };
 </script>
