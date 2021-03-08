@@ -1,38 +1,38 @@
 <template>
   <div class="home">
     <v-container id="goals" class="py-0" tag="section">
+       <h2>工具列表</h2>
       <v-row>
-        <v-col cols="7">
-          <h2>重要事项</h2>
-        </v-col>
-        <v-col cols="5">
-          <h2>今日事项</h2>
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col cols="7" class="d-flex">
-          <important-task />
-        </v-col>
-        <v-col cols="5" class="d-flex">
-          <today-task />
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col cols="7">
-          <h2>常用功能</h2>
-        </v-col>
-        <v-col cols="5">
-          <h2>神奇便签</h2>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="7" class="d-flex">
-          <pop-items />
-        </v-col>
-        <v-col cols="5" class="d-flex"> 
-          <quick-notes />
+        <v-col
+          v-for="(item, i) in cards"
+          :key="i"
+          class="d-flex"
+          cols="12"
+          sm="6"
+          md="4"
+        >
+          <v-card width="280" height="178" @click="onClickCard(item.pageUrl)">
+            <v-card-title class="py-2">
+              <v-img
+                width="53"
+                height="53"
+                max-width="53"
+                :src="item.iconSrc"
+              />
+              <span class="title font-weight-light" v-text="item.name"></span>
+            </v-card-title>
+            <v-divider class="mx-4"></v-divider>
+            <v-list height="68" class="py-1 pb-1">
+              <v-card-text class="py-0" v-text="item.des" />
+            </v-list>
+            <v-card-actions class="py-0">
+              <v-spacer></v-spacer>
+              <v-btn text @click.stop="onClickCardUseBtn(item.pageUrl)">
+                使用
+              </v-btn>
+              <v-btn text @click.stop="onClickCardHelpBtn(item.help)"> 帮助 </v-btn>
+            </v-card-actions>
+          </v-card>
         </v-col>
       </v-row>
       <v-snackbar v-model="isTipOpen">
@@ -50,17 +50,11 @@
 
 <script>
 // @ is an alias to /src
-import ImportantTask from "@/components/ImportantTask.vue";
-import TodayTask from "../components/TodayTask.vue";
-import PopItems from "../components/PopItems.vue";
-import QuickNotes from "../components/QuickNotes.vue";
+
 export default {
-  name: "Home",
+  name: "Tool",
   components: {
-    ImportantTask,
-    TodayTask,
-    PopItems,
-    QuickNotes,
+    HelloWorld,
   },
   data: () => ({
     isTipOpen: false,
@@ -118,11 +112,11 @@ export default {
   }),
   methods: {
     onClickCard(url) {
-      if (url == "") return;
+      if(url=="")return;
       this.$router.push({ path: "/" + url });
     },
     onClickCardUseBtn(url) {
-      if (url == "") return;
+      if(url=="")return;
       this.$router.push({ path: "/" + url });
     },
     onClickCardHelpBtn(helpstr) {
