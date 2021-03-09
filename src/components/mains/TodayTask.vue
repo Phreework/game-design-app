@@ -8,7 +8,7 @@
       class="ma-0 pa-0"
       :bench="0"
       :items="tasks"
-      height="120"
+      :height="$vuetify.breakpoint.xl ? 160 : 120"
       item-height="20"
     >
       <template v-slot:default="{ item }">

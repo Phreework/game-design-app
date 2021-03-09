@@ -14,6 +14,12 @@ Vue.use(VueRouter);
 //   parent: null,
 // },
 export const routeMap = new Map([
+  ["Default", {
+    icon: "mdi-home",
+    text: "首页",
+    route: "/",
+    parent: null,
+  }],
   ["Home", {
     icon: "mdi-home",
     text: "首页",
@@ -55,7 +61,7 @@ export const routeMap = new Map([
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Default',
     component: Home,
   },
   {
@@ -89,7 +95,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes,
 });
@@ -111,7 +117,7 @@ router.beforeEach((to, from, next) => {
   }
   preRouters.reverse()
   console.log(preRouters);
-
+  
   next()
 })
 export default router;

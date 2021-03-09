@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <v-container id="goals" class="py-0" tag="section">
-      <v-row>
+      <v-row >
         <v-col cols="7">
           <h2>重要事项</h2>
         </v-col>
@@ -11,27 +11,27 @@
       </v-row>
 
       <v-row>
-        <v-col cols="7" class="d-flex">
+        <v-col cols="7" class="d-flex pt-0">
           <important-task />
         </v-col>
-        <v-col cols="5" class="d-flex">
+        <v-col cols="5" class="d-flex pt-0">
           <today-task />
         </v-col>
       </v-row>
 
       <v-row>
-        <v-col cols="7">
+        <v-col cols="7" class="pt-1">
           <h2>常用功能</h2>
         </v-col>
-        <v-col cols="5">
+        <v-col cols="5" class="pt-1">
           <h2>神奇便签</h2>
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="7" class="d-flex">
+        <v-col cols="7" class="d-flex pt-0">
           <pop-items />
         </v-col>
-        <v-col cols="5" class="d-flex"> 
+        <v-col cols="5" class="d-flex pt-0"> 
           <quick-notes />
         </v-col>
       </v-row>
@@ -50,10 +50,10 @@
 
 <script>
 // @ is an alias to /src
-import ImportantTask from "@/components/ImportantTask.vue";
-import TodayTask from "../components/TodayTask.vue";
-import PopItems from "../components/PopItems.vue";
-import QuickNotes from "../components/QuickNotes.vue";
+import ImportantTask from "@/components/mains/ImportantTask.vue";
+import TodayTask from "../components/mains/TodayTask.vue";
+import PopItems from "../components/mains/PopItems.vue";
+import QuickNotes from "../components/mains/QuickNotes.vue";
 export default {
   name: "Home",
   components: {

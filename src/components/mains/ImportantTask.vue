@@ -26,7 +26,7 @@
               </v-text-field>
             </v-col>
             <v-col cols="1" />
-          </v-row>
+          </v-row> 
         </v-container>
       </v-list>
       <v-card-actions class="pa-0 ma-0">

@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <v-app-bar elevate-on-scroll app color="bgwhite" height="60" >
+    <v-app-bar elevate-on-scroll app color="bgwhite" height="50" >
       <v-toolbar-title
         class="textblack--text pa-1"
         v-for="(item, index) in preRouters"
