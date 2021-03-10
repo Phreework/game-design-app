@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    
     <Navbar />
     <v-main class="contentwhite ">
       <router-view class="pa-4 px-8 px-lg-16 mx-lg-16  px-xl-16 mx-xl-16"></router-view>

@@ -1,12 +1,18 @@
 <template>
   <nav>
-    <v-app-bar elevate-on-scroll app color="bgwhite" height="50" >
+    <v-app-bar
+      elevate-on-scroll
+      app
+      color="bgwhite"
+      height="50"
+      style="-webkit-app-region: drag"
+    >
       <v-toolbar-title
         class="textblack--text pa-1"
         v-for="(item, index) in preRouters"
         :key="item.id"
       >
-        <v-btn text @click="clickLevelNav(item)" class="pa-0" >
+        <v-btn text @click="clickLevelNav(item)" class="pa-0">
           <span
             :class="
               (index != preRouters.length - 1 ? 'textblack' : 'mypink') +
@@ -22,6 +28,9 @@
       <v-spacer></v-spacer>
       <span class="textgrey--text" style="font-size: 20px">12:00am &nbsp;</span>
       <v-icon color="textgrey">mdi-cog</v-icon>
+      <v-icon class="ml-4" color="textgrey " @click="close()"
+        >mdi-close-box</v-icon
+      >
     </v-app-bar>
     <v-navigation-drawer
       app
@@ -213,6 +222,19 @@ export default {
       this.$router.push(item.route);
       this.refreshPreRouters();
       console.log("点击", this.links);
+    },
+    close() {
+      //先使用下面跳转对应页面
+      let routeData = this.$router.resolve({
+        path: `/`,
+      });
+      window.open(routeData.href, "_blank");
+
+      //新页面中,才能使用如下关闭
+      window.close();
+
+      //可以使用判断显示隐藏关闭按钮
+      this.isActive = Boolean(window.opener);
     },
   },
 };
