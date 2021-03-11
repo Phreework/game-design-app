@@ -10,7 +10,9 @@
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "elecstart": "electron .",
+    "pack": "electron-builder --win --x64"
   },
   "dependencies": {
     "@mdi/font": "^5.9.55",
@@ -37,6 +39,9 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "deepmerge": "^4.2.2",
+    "electron": "^7.3.3",
+    "electron-builder": "^22.8.0",
+    "electron-package": "^0.1.0",
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^11.3.0",
     "eslint-friendly-formatter": "^3.0.0",
@@ -81,5 +86,26 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "main": "electronMain.js",
+  "build": {
+    "appId": "com.leon.HelloWorld02",
+    "copyright": "PhreeSoda",
+    "productName": "工具箱",
+    "directories": { 
+      "output": "pack"
+    },
+    "dmg": {
+      "background": "res/background.png",
+      "window": {
+        "x": 100,
+        "y": 100,
+        "width": 1280,
+        "height": 750
+      }
+    },
+    "win": {
+      "icon": "res/icon.ico"
+    }
+  }
 }

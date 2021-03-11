@@ -1,11 +1,20 @@
 <template>
   <nav>
+    <v-system-bar window color="contentwhite">
+      <v-icon>mdi-message</v-icon>
+      <span>10 unread messages</span>
+      <v-spacer></v-spacer>
+      <v-icon>mdi-minus</v-icon>
+      <v-icon>mdi-checkbox-blank-outline</v-icon>
+      <v-icon>mdi-close</v-icon>
+    </v-system-bar>
     <v-app-bar
       elevate-on-scroll
       app
       color="bgwhite"
       height="50"
       style="-webkit-app-region: drag"
+      class="mt-8"
     >
       <v-toolbar-title
         class="textblack--text pa-1"
@@ -28,9 +37,9 @@
       <v-spacer></v-spacer>
       <span class="textgrey--text" style="font-size: 20px">12:00am &nbsp;</span>
       <v-icon color="textgrey">mdi-cog</v-icon>
-      <v-icon class="ml-4" color="textgrey " @click="close()"
+      <!-- <v-icon class="ml-4" color="textgrey " @click="close()"
         >mdi-close-box</v-icon
-      >
+      > -->
     </v-app-bar>
     <v-navigation-drawer
       app
@@ -41,6 +50,7 @@
       :mini-variant="miniVariant"
       :right="right"
       dark
+      class="mt-8"
     >
       <v-list class="mx-0 my-0" color="bgwhite">
         <v-container class="ma-1 pa-1">

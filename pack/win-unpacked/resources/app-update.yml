@@ -1,0 +1,4 @@
+owner: Phreework
+repo: game-design-app
+provider: github
+updaterCacheDirName: my-app-updater

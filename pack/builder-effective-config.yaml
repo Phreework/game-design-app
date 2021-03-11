@@ -1,0 +1,16 @@
+directories:
+  output: pack
+  buildResources: build
+appId: com.leon.HelloWorld02
+copyright: PhreeSoda
+productName: 工具箱
+dmg:
+  background: res/background.png
+  window:
+    x: 100
+    'y': 100
+    width: 1280
+    height: 750
+win:
+  icon: res/icon.ico
+electronVersion: 7.3.3
