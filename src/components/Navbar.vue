@@ -1,12 +1,12 @@
 <template>
   <nav>
     <v-system-bar window color="contentwhite">
-      <v-icon>mdi-message</v-icon>
-      <span>10 unread messages</span>
+      <v-icon>mdi-tools</v-icon>
+      <span>策划工具箱</span>
       <v-spacer></v-spacer>
       <v-icon>mdi-minus</v-icon>
       <v-icon>mdi-checkbox-blank-outline</v-icon>
-      <v-icon>mdi-close</v-icon>
+      <v-icon @click="close()">mdi-close</v-icon>
     </v-system-bar>
     <v-app-bar
       elevate-on-scroll
@@ -234,17 +234,7 @@ export default {
       console.log("点击", this.links);
     },
     close() {
-      //先使用下面跳转对应页面
-      let routeData = this.$router.resolve({
-        path: `/`,
-      });
-      window.open(routeData.href, "_blank");
-
-      //新页面中,才能使用如下关闭
-      window.close();
-
-      //可以使用判断显示隐藏关闭按钮
-      this.isActive = Boolean(window.opener);
+      window.electron.ipcRenderer.send("destroy");
     },
   },
 };
